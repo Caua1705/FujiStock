@@ -4,7 +4,7 @@ from pathlib import Path
 import plotly.express as px
 
 # Leitura da planilha e suas respectivas abas
-caminho_planilha = Path(__file__).parents[1] / "inventário_fuji - 12-05.xlsx"
+caminho_planilha = Path(__file__).parent / "inventário_fuji - 12-05.xlsx"
 
 st.set_page_config(page_title="Estoque Fuji", layout="wide")
 
@@ -24,20 +24,6 @@ dict_tipos_estoque = {
     "Freezer Salão": pd.read_excel(caminho_planilha, sheet_name="Freezer Salão", index_col=0),
 }
 
-df_estoque_total=pd.concat(dict_tipos_estoque.values())
-df_estoque_total_por_categoria=df_estoque_total.groupby("Categoria")["Quantidade"].sum().reset_index()
-
-#Gráfico de barras:
-grafico_barrras=px.bar(df_estoque_total_por_categoria,x="Categoria",y="Quantidade")
-grafico_barrras.update_layout(
-    title="Estoque Total por Categoria",
-    xaxis_title="Categoria",
-    yaxis_title="Quantidade",
-    title_x=0.5  # Centraliza o título
-)
-st.plotly_chart(grafico_barrras)
-
-
 col1,col2=st.columns(2)
 # Seletor de Tipo de Estoque
 with col1:
@@ -47,7 +33,17 @@ with col1:
 # Seletor de Categoria
 with col2:
     categoria = st.selectbox("🗂️ Categoria", df_selecionado["Categoria"].unique())
-    df_agrupado_por_categoria = df_selecionado.loc[df_selecionado["Categoria"] == categoria]
+
+#Gráfico de barras:
+df_grafico=df_selecionado.loc[df_selecionado["Categoria"]==categoria]
+grafico_barrras=px.bar(df_grafico,x="Nome",y="Quantidade",)
+grafico_barrras.update_layout(
+    title="Estoque Total por Categoria",
+    xaxis_title="Nome",
+    yaxis_title="Quantidade",
+    title_x=0.5  # Centraliza o título
+)
+st.plotly_chart(grafico_barrras,use_container_width=True)
 
 
 # Exibição dos Dados
