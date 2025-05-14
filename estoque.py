@@ -45,10 +45,21 @@ grafico_barrras.update_layout(
 )
 st.plotly_chart(grafico_barrras,use_container_width=True)
 
+st.divider()
 
 # Exibição dos Dados
 st.markdown(f"### 📋 Estoque Atual - {tipo_estoque} - {categoria}")
 st.write(df_grafico,use_container_width=True)
 
-
-
+st.sidebar.markdown("### 🔍 Pesquisa de Produto")
+produto_pesquisa = st.sidebar.text_input("Digite o nome do produto para buscar:", "")
+if produto_pesquisa:
+    # Busca nos dados gerais (sem filtrar por tipo de estoque ou categoria)
+    all_data = pd.concat(dict_tipos_estoque.values())
+    df_produto = all_data[all_data["Nome"].str.contains(produto_pesquisa, case=False, na=False)]
+    
+    if not df_produto.empty:
+        # Exibe a quantidade e a tabela do produto
+        st.sidebar.write(f"**Quantidade do produto '{produto_pesquisa}':** {df_produto['Quantidade'].sum()}")
+    else:
+        st.sidebar.warning(f"Produto '{produto_pesquisa}' não encontrado.")
