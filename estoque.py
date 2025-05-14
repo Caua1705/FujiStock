@@ -61,5 +61,6 @@ if produto_pesquisa:
     if not df_produto.empty:
         # Exibe a quantidade e a tabela do produto
         st.sidebar.write(f"**Quantidade do produto '{produto_pesquisa}':** {df_produto['Quantidade'].sum()}")
+        st.sidebar.write(df_produto)
     else:
         st.sidebar.warning(f"Produto '{produto_pesquisa}' não encontrado.")
