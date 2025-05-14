@@ -48,8 +48,7 @@ st.plotly_chart(grafico_barrras,use_container_width=True)
 
 # Exibição dos Dados
 st.markdown(f"### 📋 Estoque Atual - {tipo_estoque} - {categoria}")
-st.write(df_agrupado_por_categoria)
+st.write(df_grafico,use_container_width=True)
 
-# Total de Itens
-total_itens = df_agrupado_por_categoria["Quantidade"].sum()
-st.markdown(f"#### Total de Itens na Categoria **{categoria}**: {total_itens}")
+
+
