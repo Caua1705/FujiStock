@@ -3,14 +3,14 @@ import streamlit as st
 from pathlib import Path
 import plotly.express as px
 
+# Leitura da planilha e suas respectivas abas
+caminho_planilha = Path(__file__).parents[1] / "inventário_fuji - 12-05.xlsx"
+
 st.set_page_config(page_title="Estoque Fuji", layout="wide")
 
 # Cabeçalho do App
 st.title("🍣 Estoque - Fuji")
 st.subheader("Controle e Análise de Estoque")
-
-# Leitura da planilha e suas respectivas abas
-caminho_planilha = Path(__file__).parents[1] / "inventário_fuji - 12-05.xlsx"
 
 dict_tipos_estoque = {
     "Bebidas Estoque Seco": pd.read_excel(caminho_planilha, sheet_name="Bebidas Estoque Seco", index_col=0),
