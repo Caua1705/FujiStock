@@ -3,7 +3,8 @@ from datetime import datetime
 
 def coletar_tipo_e_data_movimentacao():
     tipo_movimentacao = st.radio("Tipo de Movimentação", ["Entrada", "Saída"])
-    data_movimentacao = st.date_input("Data da Movimentação", value=datetime.today(),format="YYYY/MM/DD")
+    data_movimentacao = st.date_input("Data da Movimentação", value=datetime.today(),format="DD/MM/YYYY")
+    data_movimentacao=data_movimentacao.strftime("%Y/%m/%d")
     agora=datetime.now()
     horario_movimentacao=agora.time()
     return {"Data da Movimentação": data_movimentacao,"Horário da Movimentação": horario_movimentacao,"Tipo de Movimentação": tipo_movimentacao}
