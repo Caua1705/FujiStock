@@ -10,6 +10,7 @@ st.title("Visão Geral do Estoque")
 produtos_estoque_baixo=produtos_baixo_estoque(st.session_state.estoque)
 df_estoque_por_categoria=custo_total_por_categoria(st.session_state.estoque)
 criar_metricas(st.session_state.catalogo_produtos,st.session_state.estoque,produtos_estoque_baixo)
+st.divider()
 col1,col2=st.columns(2)
 with col1:
     grafico_valor_por_categoria(df_estoque_por_categoria)
