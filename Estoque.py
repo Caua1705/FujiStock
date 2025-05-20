@@ -13,9 +13,9 @@ criar_metricas(st.session_state.catalogo_produtos,st.session_state.estoque,produ
 st.divider()
 # col1,col2=st.columns(2)
 # with col1:
+st.subheader("Distribuição do Valor em Estoque por Categoria")
 grafico_valor_por_categoria(df_estoque_por_categoria)
 # with col2:
-st.subheader("Distribuição do Valor em Estoque por Categoria")
 colunas_necessarias=produtos_estoque_baixo[["Categoria","Nome","Unidade","Quantidade"]]
 st.write(colunas_necessarias)
         # grafico_produtos_baixo_estoque(produtos_estoque_baixo)
