@@ -13,8 +13,8 @@ abas_estoque = st.tabs(["📊 Visão Geral", "📦 Movimentações"])
 # with abas_estoque[0]:
     # col1,col2=st.columns(2)
     # with col1:
-df_estoque_por_categoria=custo_total_por_categoria(st.session_state.estoque)
-grafico_valor_por_categoria(df_estoque_por_categoria)
+# df_estoque_por_categoria=custo_total_por_categoria(st.session_state.estoque)
+# grafico_valor_por_categoria(df_estoque_por_categoria)
         # grafico_produtos_baixo_estoque(produtos_estoque_baixo)
         #Quantidade total por categoria
         #Valor total por categoria (custo acumulado)
