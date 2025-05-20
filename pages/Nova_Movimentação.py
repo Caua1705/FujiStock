@@ -5,7 +5,7 @@ from utils.adicionar_movimentacao import adicionar_movimentacao,adicionar_histor
 from utils.atualizar_estoque import atualizar_estoque
 from utils.inicializador import inicializar_dados
 
-
+st.set_page_config(layout="wide")
 st.title("Nova Movimentação")
 #Inicializar Dados
 caminho_movimentacoes,caminho_historico_custos,caminho_estoque=inicializar_dados()
