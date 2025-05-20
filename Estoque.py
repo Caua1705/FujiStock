@@ -15,6 +15,7 @@ st.divider()
 # with col1:
 grafico_valor_por_categoria(df_estoque_por_categoria)
 # with col2:
+st.subheader("Distribuição do Valor em Estoque por Categoria")
 colunas_necessarias=produtos_estoque_baixo[["Categoria","Nome","Unidade","Quantidade"]]
 st.write(colunas_necessarias)
         # grafico_produtos_baixo_estoque(produtos_estoque_baixo)
