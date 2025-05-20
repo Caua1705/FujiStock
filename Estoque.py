@@ -1,8 +1,8 @@
 import streamlit as st
 from utils.inicializador import inicializar_dados
 from estoque.metricas import criar_metricas
-from estoque.agrupar_dados import produtos_baixo_estoque
-from estoque.graficos import grafico_produtos_baixo_estoque
+from estoque.agrupar_dados import produtos_baixo_estoque,custo_total_por_categoria
+from estoque.graficos import grafico_valor_por_categoria
 
 inicializar_dados()
 
@@ -13,7 +13,12 @@ abas_estoque = st.tabs(["📊 Visão Geral", "📦 Movimentações"])
 with abas_estoque[0]:
     col1,col2=st.columns(2)
     with col1:
-        grafico_produtos_baixo_estoque(produtos_estoque_baixo)
-        st.write(st.session_state.movimentacoes)
+        df_estoque_por_categoria=custo_total_por_categoria(st.session_state.estoque)
+        grafico_valor_por_categoria(df_estoque_por_categoria)
+        # grafico_produtos_baixo_estoque(produtos_estoque_baixo)
+        #Quantidade total por categoria
+        #Valor total por categoria (custo acumulado)
+    # st.warning(f"⚠️ Estoque baixo: **{nome}** com apenas **{qtd:.2f} {unidade}**")
+        # st.write(df_estoque_por_categoria)
 with abas_estoque[1]:
     pass
