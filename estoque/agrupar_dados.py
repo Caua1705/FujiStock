@@ -10,4 +10,5 @@ def custo_total_por_categoria(df_estoque):
     df_estoque["Custo Total"]=df_estoque["Quantidade"]*df_estoque["Valor Unitário"]
     df_estoque_por_categoria=df_estoque.groupby("Categoria")["Custo Total"].sum().reset_index().sort_values(by="Custo Total")
     df_estoque_por_categoria=df_estoque_por_categoria.head(4)
+    st.write(df_estoque_por_categoria)
     return df_estoque_por_categoria
