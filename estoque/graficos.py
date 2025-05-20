@@ -9,7 +9,9 @@ def grafico_valor_por_categoria(df_estoque_por_categoria):
     fig.update_layout(xaxis_title="Categoria",
                       yaxis_title="Custo Total",
                       showlegend=True)
-    fig.update_traces(textinfo="label+value")       
+    fig.update_traces(textinfo="label+value",
+                      texttemplate='%{label}<br>R$ %{value:,.2f}',
+                      textfont_size=14)       
     st.plotly_chart(fig)
     st.write(df_estoque_por_categoria)
 
