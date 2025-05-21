@@ -20,20 +20,17 @@ dados_motivo=coletar_motivo_e_fornecedor(dados_movimentacao["Tipo de Movimentaç
 dados_responsavel=coletar_responsavel()
 dict_dados,botao=criar_dicionario_dados(dados_movimentacao,dados_produto,dados_quantidade,dados_motivo,dados_responsavel)
 
-if st.button("Adicionar"):
-    ...
-    # Salvando com segurança
-    with pd.ExcelWriter(caminho_movimentacoes, engine='openpyxl', mode='w') as writer:
-        st.session_state.movimentacoes.to_excel(writer, index=False)
-
-    with pd.ExcelWriter(caminho_historico_custos, engine='openpyxl', mode='w') as writer:
-        st.session_state.historico_custos.to_excel(writer, index=False)
-
-    with pd.ExcelWriter(caminho_estoque, engine='openpyxl', mode='w') as writer:
-        st.session_state.estoque.to_excel(writer, index=False)
-
-    st.success("Movimentação salva com sucesso!")
-    st.write("Arquivos salvos em:")
-    st.write(caminho_movimentacoes)
-    st.write(caminho_historico_custos)
-    st.write(caminho_estoque)
+if botao: 
+    #Adiciona Movimentação
+    st.session_state.movimentacoes=adicionar_movimentacao(dict_dados,st.session_state.movimentacoes)
+    st.session_state.movimentacoes.to_excel(caminho_movimentacoes,index=False)
+    #Adicionar Histórico de Custos
+    if dict_dados["Tipo de Movimentação"]=="Entrada":
+        st.session_state.historico_custos=adicionar_historico_custos(dict_dados,st.session_state.historico_custos)
+        st.session_state.historico_custos.to_excel(caminho_historico_custos,index=False)
+    #Atualiza Estoque
+    st.session_state.estoque=st.session_state.estoque.fillna(0)
+    st.session_state.estoque=atualizar_estoque(dict_dados,st.session_state.estoque)
+    st.session_state.estoque.to_excel(caminho_estoque,index=False)
+    #Confirma Movimentação
+    st.success(f'{dict_dados["Tipo de Movimentação"]} do produto **{dict_dados["Nome"].strip()}** registrada com sucesso!')
