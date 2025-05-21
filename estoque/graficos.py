@@ -7,7 +7,6 @@ def grafico_valor_por_categoria(df_estoque_por_categoria):
                y="Categoria",
                title="Análise do custo total armazenado por categoria",
                orientation="h",
-               text="Custo Total",
                color="Categoria"
                )
     fig.update_layout(
