@@ -13,6 +13,7 @@ def grafico_valor_por_categoria(df_estoque_por_categoria):
         xaxis_title="Custo Total (R$)",
         yaxis_title="Categoria",
         showlegend=False,
+        height=300
     )
     st.plotly_chart(fig,use_container_width=True)
     st.write(df_estoque_por_categoria)
