@@ -13,7 +13,7 @@ def grafico_valor_por_categoria(df_estoque_por_categoria):
         xaxis_title="Custo Total (R$)",
         yaxis_title="Categoria",
         yaxis=dict(
-        tickfont=dict(size=16)  # Aumenta o tamanho do texto do eixo Y
+        tickfont=dict(size=13)  # Aumenta o tamanho do texto do eixo Y
 ),
         showlegend=False,
         height=400
