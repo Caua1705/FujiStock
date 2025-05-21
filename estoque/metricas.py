@@ -6,8 +6,8 @@ def criar_metricas(df_catalogo_produtos,df_estoque,produtos_estoque_baixo):
         valor_total_estoque=df_estoque["Custo Total"].sum()
         st.metric("Valor Total do Estoque",f"R$ {valor_total_estoque:.2f}")
     with col2:
-        st.metric("Produtos Cadastrados",len(df_catalogo_produtos["Nome"]))
+        st.metric("Produtos Cadastrados",f"{len(df_catalogo_produtos["Nome"]):,.0f}")
     with col3:
-        st.metric("Produtos em Estoque",len(df_estoque["Nome"]))
+        st.metric("Produtos em Estoque",f"{len(df_estoque["Nome"]):,.0f}")
     with col4:
-        st.metric("Produtos com Estoque Baixo",len(produtos_estoque_baixo))
+        st.metric("Produtos com Estoque Baixo",f"{len(produtos_estoque_baixo):,.0f}")
