@@ -8,6 +8,6 @@ def grafico_valor_por_categoria(df_estoque_por_categoria):
                title="Valor em Estoque por Categoria",
                orientation="h"
                )
-    fig.update_layout(xaxis="Categoria",yaxis="Custo Total",showlegend=True)
+    fig.update_layout(xaxis_title="Categoria",yaxis_title="Custo Total",showlegend=True)
     st.plotly_chart(fig,use_container_width=True)
     st.write(df_estoque_por_categoria)
